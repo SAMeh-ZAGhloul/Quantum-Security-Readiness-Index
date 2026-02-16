@@ -6,17 +6,19 @@
     <title>Quantum Security Readiness Index (QSRI) Assessment</title>
     <style>
         :root {
-            --primary-dark: #171748;
-            --primary-darker: #0F0F42;
-            --accent-blue: #4B92CC;
-            --accent-light: #6BAFDA;
+            --primary-dark: #0F0F42;
+            --primary-darker: #0A0A2E;
+            --accent-blue: #00BFFF;
+            --accent-light: #00E5FF;
+            --accent-gold: #FFB700;
+            --accent-orange: #FFA500;
             --white: #FFFFFF;
             --gray-light: #F5F7FA;
             --gray-medium: #E1E5EB;
             --gray-dark: #6B7280;
-            --success: #10B981;
-            --warning: #F59E0B;
-            --danger: #EF4444;
+            --success: #00E5FF;
+            --warning: #FFB700;
+            --danger: #FF6B6B;
         }
 
         * {
@@ -27,9 +29,50 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--gray-light) 0%, var(--white) 100%);
+            background-color: var(--primary-dark);
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, var(--accent-gold), var(--accent-gold)),
+                radial-gradient(2px 2px at 60px 70px, var(--accent-gold), var(--accent-gold)),
+                radial-gradient(2px 2px at 50px 50px, var(--accent-light), var(--accent-light)),
+                radial-gradient(2px 2px at 130px 80px, var(--accent-gold), var(--accent-gold)),
+                radial-gradient(2px 2px at 90px 10px, var(--accent-light), var(--accent-light)),
+                radial-gradient(2px 2px at 30px 80px, var(--accent-gold), var(--accent-gold)),
+                radial-gradient(2px 2px at 130px 130px, var(--accent-light), var(--accent-light)),
+                linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-blue) 25%, transparent 25%, transparent 50%, var(--accent-blue) 50%, var(--accent-blue) 75%, transparent 75%, transparent) 0 0 / 200px 200px,
+                linear-gradient(45deg, var(--accent-blue) 0%, var(--accent-blue) 25%, transparent 25%, transparent 50%, var(--accent-blue) 50%, var(--accent-blue) 75%, transparent 75%, transparent) 100px 100px / 200px 200px;
+            background-size: 400% 400%, 400% 400%, 400% 400%, 400% 400%, 400% 400%, 400% 400%, 400% 400%, 300px 300px, 300px 300px;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
             min-height: 100vh;
             color: var(--primary-dark);
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: linear-gradient(135deg, transparent 0%, transparent 40%, var(--accent-light) 45%, var(--accent-light) 55%, transparent 60%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -10%;
+            right: 5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent-light) 0%, var(--accent-light) 1px, transparent 1px);
+            background-size: 15px 15px;
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .header {
@@ -39,7 +82,9 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 20px rgba(23, 23, 72, 0.3);
+            box-shadow: 0 4px 20px rgba(15, 15, 66, 0.5);
+            position: relative;
+            z-index: 10;
         }
 
         .header-left {
@@ -62,6 +107,8 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 30px 40px;
+            position: relative;
+            z-index: 1;
         }
 
         .purpose-section {
@@ -69,7 +116,7 @@
             border-radius: 16px;
             padding: 25px 30px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(23, 23, 72, 0.08);
+            box-shadow: 0 4px 15px rgba(15, 15, 66, 0.15);
         }
 
         .purpose-section h2 {
@@ -520,9 +567,9 @@
         }
 
         .progress-unprepared { background: linear-gradient(90deg, #EF4444, #F87171); }
-        .progress-early { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+        .progress-early { background: linear-gradient(90deg, #FFB700, #FFC700); }
         .progress-progressing { background: linear-gradient(90deg, var(--accent-blue), var(--accent-light)); }
-        .progress-mature { background: linear-gradient(90deg, #10B981, #34D399); }
+        .progress-mature { background: linear-gradient(90deg, #00E5FF, #00BFFF); }
 
         .chart-container {
             margin-top: 25px;
@@ -667,7 +714,9 @@
             padding: 20px 40px;
             text-align: center;
             margin-top: 40px;
-            box-shadow: 0 -4px 20px rgba(23, 23, 72, 0.2);
+            box-shadow: 0 -4px 20px rgba(15, 15, 66, 0.5);
+            position: relative;
+            z-index: 10;
         }
 
         .footer-content {
@@ -699,35 +748,7 @@
             }
         }
 
-        .export-btn {
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .export-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-        }
-
         @media (max-width: 768px) {
-            .export-btn {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-            }
 
             .header {
                 flex-wrap: wrap;
@@ -740,7 +761,6 @@
             }
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <header class="header">
@@ -749,16 +769,6 @@
                 <h1>Quantum Security Readiness Index</h1>
                 <p>Comprehensive Assessment Tool</p>
             </div>
-        </div>
-        <div class="header-right">
-            <button class="export-btn" onclick="exportToPDF()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                Export PDF
-            </button>
         </div>
     </header>
 
@@ -1069,11 +1079,11 @@
         function getBarColor(maturity) {
             const colors = [
                 'linear-gradient(90deg, #EF4444, #F87171)',
-                'linear-gradient(90deg, #F59E0B, #FBBF24)',
-                'linear-gradient(90deg, #F59E0B, #FBBF24)',
-                'linear-gradient(90deg, #4B92CC, #6BAFDA)',
-                'linear-gradient(90deg, #10B981, #34D399)',
-                'linear-gradient(90deg, #10B981, #34D399)'
+                'linear-gradient(90deg, #FFB700, #FFC700)',
+                'linear-gradient(90deg, #FFB700, #FFC700)',
+                'linear-gradient(90deg, #00BFFF, #00E5FF)',
+                'linear-gradient(90deg, #00E5FF, #00BFFF)',
+                'linear-gradient(90deg, #00E5FF, #00BFFF)'
             ];
             return colors[maturity];
         }
@@ -1090,7 +1100,7 @@
             
             // Short names for labels
             const shortNames = ['Inventory', 'Risk', 'Policy', 'Agility', 'Migration', 'Supply Chain', 'Compliance', 'Training'];
-            const dimensionColors = ['#4B92CC', '#5BA3DD', '#6BB4EE', '#7BC5FF', '#8BD6FF', '#9BE7FF', '#ABF8FF', '#BBFFFF'];
+            const dimensionColors = ['#00BFFF', '#00C8FF', '#00D1FF', '#00DAFF', '#00E5FF', '#1AECFF', '#33F3FF', '#4DFAFF'];
             
             let svgContent = '';
             
@@ -1136,11 +1146,11 @@
             // Data area with gradient
             svgContent += `<defs>
                 <linearGradient id="radarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style="stop-color:#4B92CC;stop-opacity:0.7"/>
-                    <stop offset="100%" style="stop-color:#6BAFDA;stop-opacity:0.5"/>
+                    <stop offset="0%" style="stop-color:#00BFFF;stop-opacity:0.7"/>
+                    <stop offset="100%" style="stop-color:#00E5FF;stop-opacity:0.5"/>
                 </linearGradient>
             </defs>`;
-            svgContent += `<polygon points="${points.trim()}" fill="url(#radarGradient)" stroke="#4B92CC" stroke-width="2"/>`;
+            svgContent += `<polygon points="${points.trim()}" fill="url(#radarGradient)" stroke="#00BFFF" stroke-width="2"/>`;
             
             // Draw data points
             assessmentData.forEach((item, index) => {
@@ -1148,7 +1158,7 @@
                 const radius = (maxRadius / 5) * item.maturity;
                 const x = centerX + radius * Math.cos(angle);
                 const y = centerY + radius * Math.sin(angle);
-                svgContent += `<circle cx="${x}" cy="${y}" r="5" fill="#4B92CC" stroke="#fff" stroke-width="2"/>`;
+                svgContent += `<circle cx="${x}" cy="${y}" r="5" fill="#00BFFF" stroke="#fff" stroke-width="2"/>`;
             });
             
             svg.innerHTML = svgContent;
@@ -1225,419 +1235,6 @@
             updateTotalScore();
         });
 
-        // Export to PDF
-        function exportToPDF() {
-            try {
-                const { jsPDF } = window.jspdf;
-                if (!jsPDF) {
-                    alert('PDF library not loaded. Please refresh the page and try again.');
-                    return;
-                }
-                
-                const doc = new jsPDF();
-                
-                const primaryDarkR = 23, primaryDarkG = 23, primaryDarkB = 72;
-                const accentBlueR = 75, accentBlueG = 146, accentBlueB = 204;
-                const grayDarkR = 107, grayDarkG = 114, grayDarkB = 128;
-                const grayMediumR = 225, grayMediumG = 229, grayMediumB = 235;
-                
-                const totalScore = calculateTotalScore();
-                const readiness = getReadinessLevel(totalScore);
-                const today = new Date();
-                const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                const fileNameDate = today.toISOString().split('T')[0];
-                
-                let yPos = 20;
-                const leftMargin = 20;
-                const pageWidth = doc.internal.pageSize.getWidth();
-                
-                // Header background
-                doc.setFillColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.rect(0, 0, pageWidth, 40, 'F');
-                
-                // Title
-                doc.setTextColor(255, 255, 255);
-                doc.setFontSize(22);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Quantum Security Readiness Index', leftMargin, 25);
-                
-                doc.setFontSize(10);
-                doc.setFont('helvetica', 'normal');
-                doc.text('Assessment Report', leftMargin, 33);
-                
-                // Date on right
-                doc.setFontSize(9);
-                doc.text(dateStr, pageWidth - leftMargin, 25, { align: 'right' });
-                
-                yPos = 55;
-                
-                // About QSRI Section
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.setFontSize(14);
-                doc.setFont('helvetica', 'bold');
-                doc.text('About QSRI', leftMargin, yPos);
-                yPos += 8;
-                
-                doc.setDrawColor(accentBlueR, accentBlueG, accentBlueB);
-                doc.setLineWidth(0.5);
-                doc.line(leftMargin, yPos, pageWidth - leftMargin, yPos);
-                yPos += 10;
-                
-                // Purpose
-                doc.setFontSize(10);
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.text('Purpose', leftMargin, yPos);
-                yPos += 5;
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                doc.setFontSize(9);
-                const purposeText = 'Quantify how well an organization is prepared for quantum threats. Provide standardized benchmarking for internal assessment, industry comparison, and regulatory reporting.';
-                const purposeLines = doc.splitTextToSize(purposeText, pageWidth - 2 * leftMargin);
-                doc.text(purposeLines, leftMargin, yPos);
-                yPos += purposeLines.length * 4 + 5;
-                
-                // Alignment
-                doc.setFontSize(10);
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.text('Alignment', leftMargin, yPos);
-                yPos += 5;
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                doc.setFontSize(9);
-                const alignmentText = 'Supports risk management, migration roadmaps, and investment prioritization. Aligns with NIST PQC, ETSI, and ENISA guidance.';
-                const alignmentLines = doc.splitTextToSize(alignmentText, pageWidth - 2 * leftMargin);
-                doc.text(alignmentLines, leftMargin, yPos);
-                yPos += alignmentLines.length * 4 + 5;
-                
-                // Methodology
-                doc.setFontSize(10);
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.text('Methodology', leftMargin, yPos);
-                yPos += 5;
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                doc.setFontSize(9);
-                doc.text('Eight critical dimensions weighted by strategic importance. Maturity levels 0-5 assessed per dimension with weighted scoring 0-100.', leftMargin, yPos);
-                yPos += 15;
-                
-                // Assessment Results Section
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.setFontSize(14);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Assessment Results', leftMargin, yPos);
-                yPos += 8;
-                
-                doc.setDrawColor(accentBlueR, accentBlueG, accentBlueB);
-                doc.line(leftMargin, yPos, pageWidth - leftMargin, yPos);
-                yPos += 12;
-                
-                // Score Summary Box
-                doc.setFillColor(245, 247, 250);
-                doc.roundedRect(leftMargin, yPos - 5, pageWidth - 2 * leftMargin, 30, 3, 3, 'F');
-                
-                doc.setFontSize(11);
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.text('Total QSRI Score:', leftMargin + 10, yPos + 5);
-                
-                doc.setFontSize(24);
-                doc.setTextColor(accentBlueR, accentBlueG, accentBlueB);
-                doc.text(String(totalScore), leftMargin + 50, yPos + 8);
-                
-                doc.setFontSize(12);
-                doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                doc.text('/100', leftMargin + 62, yPos + 8);
-                
-                doc.setFontSize(11);
-                doc.setFont('helvetica', 'bold');
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.text('Readiness Level:', leftMargin + 80, yPos + 5);
-                
-                // Readiness badge color
-                let rColorR, rColorG, rColorB;
-                if (readiness.level === 'Unprepared') {
-                    rColorR = 239; rColorG = 68; rColorB = 68;
-                } else if (readiness.level === 'Early-stage') {
-                    rColorR = 245; rColorG = 158; rColorB = 11;
-                } else if (readiness.level === 'Progressing') {
-                    rColorR = accentBlueR; rColorG = accentBlueG; rColorB = accentBlueB;
-                } else {
-                    rColorR = 16; rColorG = 185; rColorB = 129;
-                }
-                doc.setTextColor(rColorR, rColorG, rColorB);
-                doc.text(readiness.level, leftMargin + 115, yPos + 5);
-                
-                doc.setFontSize(9);
-                doc.setFont('helvetica', 'normal');
-                doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                doc.text(readiness.interpretation, leftMargin + 10, yPos + 18);
-                
-                yPos += 40;
-                
-                // Assessment Table
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.setFontSize(12);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Dimension Details', leftMargin, yPos);
-                yPos += 8;
-                
-                // Table header
-                doc.setFillColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.rect(leftMargin, yPos, pageWidth - 2 * leftMargin, 8, 'F');
-                doc.setTextColor(255, 255, 255);
-                doc.setFontSize(8);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Dimension', leftMargin + 3, yPos + 5);
-                doc.text('Weight', leftMargin + 80, yPos + 5);
-                doc.text('Maturity', leftMargin + 100, yPos + 5);
-                doc.text('Score', leftMargin + 125, yPos + 5);
-                doc.text('Max', leftMargin + 145, yPos + 5);
-                yPos += 8;
-                
-                // Table rows
-                doc.setFont('helvetica', 'normal');
-                const shortNames = ['Inventory', 'Risk Assessment', 'Policy', 'Tech Agility', 'Migration', 'Supply Chain', 'Compliance', 'Training'];
-                
-                assessmentData.forEach((item, index) => {
-                    const score = calculateScore(item.weight, item.maturity);
-                    const maxScore = Math.round(item.weight * 100);
-                    
-                    if (index % 2 === 0) {
-                        doc.setFillColor(250, 251, 252);
-                        doc.rect(leftMargin, yPos, pageWidth - 2 * leftMargin, 7, 'F');
-                    }
-                    
-                    doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                    doc.setFontSize(8);
-                    doc.text(shortNames[index], leftMargin + 3, yPos + 5);
-                    
-                    doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                    doc.text((item.weight * 100).toFixed(0) + '%', leftMargin + 80, yPos + 5);
-                    doc.text(item.maturity + '/5', leftMargin + 100, yPos + 5);
-                    
-                    doc.setTextColor(accentBlueR, accentBlueG, accentBlueB);
-                    doc.setFont('helvetica', 'bold');
-                    doc.text(String(score), leftMargin + 125, yPos + 5);
-                    
-                    doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                    doc.setFont('helvetica', 'normal');
-                    doc.text(String(maxScore), leftMargin + 145, yPos + 5);
-                    
-                    yPos += 7;
-                });
-                
-                // Total row
-                doc.setFillColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.rect(leftMargin, yPos, pageWidth - 2 * leftMargin, 8, 'F');
-                doc.setTextColor(255, 255, 255);
-                doc.setFontSize(9);
-                doc.setFont('helvetica', 'bold');
-                doc.text('TOTAL', leftMargin + 3, yPos + 5);
-                doc.text('100%', leftMargin + 80, yPos + 5);
-                doc.text(String(totalScore), leftMargin + 125, yPos + 5);
-                doc.text('100', leftMargin + 145, yPos + 5);
-                yPos += 20;
-                
-                // Add new page for additional content
-                doc.addPage();
-                yPos = 20;
-                
-                // Radar Chart
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.setFontSize(14);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Quantum Maturity Radar', leftMargin, yPos);
-                yPos += 8;
-                
-                doc.setDrawColor(accentBlueR, accentBlueG, accentBlueB);
-                doc.line(leftMargin, yPos, pageWidth - leftMargin, yPos);
-                yPos += 10;
-                
-                // Draw radar chart
-                const centerX = pageWidth / 2;
-                const chartY = yPos + 50;
-                const maxR = 40;
-                
-                // Draw concentric circles
-                for (let i = 5; i >= 1; i--) {
-                    const r = (maxR / 5) * i;
-                    doc.setDrawColor(grayMediumR, grayMediumG, grayMediumB);
-                    doc.setLineWidth(0.3);
-                    doc.circle(centerX, chartY, r, 'S');
-                }
-                
-                // Draw axes and labels
-                const numPoints = assessmentData.length;
-                const angleStep = (2 * Math.PI) / numPoints;
-                
-                assessmentData.forEach((item, index) => {
-                    const angle = index * angleStep - Math.PI / 2;
-                    const x = centerX + maxR * Math.cos(angle);
-                    const y = chartY + maxR * Math.sin(angle);
-                    
-                    doc.setDrawColor(grayMediumR, grayMediumG, grayMediumB);
-                    doc.setLineWidth(0.3);
-                    doc.line(centerX, chartY, x, y);
-                    
-                    // Label
-                    const labelR = maxR + 12;
-                    const lx = centerX + labelR * Math.cos(angle);
-                    const ly = chartY + labelR * Math.sin(angle);
-                    
-                    doc.setFontSize(7);
-                    doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                    doc.setFont('helvetica', 'bold');
-                    doc.text(shortNames[index], lx, ly, { align: 'center' });
-                    doc.setFont('helvetica', 'normal');
-                    doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                    doc.text('(' + item.maturity + '/5)', lx, ly + 4, { align: 'center' });
-                });
-                
-                // Draw data polygon
-                doc.setDrawColor(accentBlueR, accentBlueG, accentBlueB);
-                doc.setLineWidth(1);
-                doc.setFillColor(75, 146, 204);
-                
-                // Build path string for polygon
-                let pathStr = '';
-                assessmentData.forEach((item, index) => {
-                    const angle = index * angleStep - Math.PI / 2;
-                    const r = (maxR / 5) * item.maturity;
-                    const x = centerX + r * Math.cos(angle);
-                    const y = chartY + r * Math.sin(angle);
-                    if (index === 0) {
-                        pathStr += 'M ' + x + ' ' + y + ' ';
-                    } else {
-                        pathStr += 'L ' + x + ' ' + y + ' ';
-                    }
-                });
-                pathStr += 'h W';
-                
-                // Draw points manually
-                assessmentData.forEach((item, index) => {
-                    const angle = index * angleStep - Math.PI / 2;
-                    const r = (maxR / 5) * item.maturity;
-                    const x = centerX + r * Math.cos(angle);
-                    const y = chartY + r * Math.sin(angle);
-                    doc.setFillColor(255, 255, 255);
-                    doc.setDrawColor(accentBlueR, accentBlueG, accentBlueB);
-                    doc.setLineWidth(1.5);
-                    doc.circle(x, y, 2, 'S');
-                });
-                
-                yPos = chartY + maxR + 35;
-                
-                // Maturity Levels Guide
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.setFontSize(12);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Maturity Levels Guide', leftMargin, yPos);
-                yPos += 8;
-                
-                doc.setDrawColor(accentBlueR, accentBlueG, accentBlueB);
-                doc.line(leftMargin, yPos, pageWidth - leftMargin, yPos);
-                yPos += 10;
-                
-                const levelDescriptions = [
-                    { level: '0', name: 'Unaware', desc: 'No awareness of quantum threats; no action taken' },
-                    { level: '1', name: 'Aware', desc: 'Basic awareness; no formal program or inventory' },
-                    { level: '2', name: 'Initiating', desc: 'Initial assessments or inventories are in progress' },
-                    { level: '3', name: 'Planning', desc: 'Roadmaps, governance, and testbeds defined' },
-                    { level: '4', name: 'Migrating', desc: 'Pilot PQC/hybrid crypto deployments in production' },
-                    { level: '5', name: 'Quantum-Safe Ready', desc: 'Full cryptographic agility and PQC adoption' }
-                ];
-                
-                const levelColors = [
-                    [255, 205, 210],
-                    [255, 224, 178],
-                    [255, 243, 224],
-                    [227, 242, 253],
-                    [232, 245, 233],
-                    [75, 146, 204]
-                ];
-                
-                levelDescriptions.forEach((level, index) => {
-                    doc.setFillColor(levelColors[index][0], levelColors[index][1], levelColors[index][2]);
-                    doc.roundedRect(leftMargin, yPos - 3, 8, 6, 2, 2, 'F');
-                    
-                    doc.setFontSize(9);
-                    doc.setFont('helvetica', 'bold');
-                    if (index === 5) {
-                        doc.setTextColor(255, 255, 255);
-                    } else {
-                        doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                    }
-                    doc.text(level.level, leftMargin + 2, yPos + 1);
-                    
-                    doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                    doc.text(level.name, leftMargin + 15, yPos);
-                    
-                    doc.setFont('helvetica', 'normal');
-                    doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                    doc.text('- ' + level.desc, leftMargin + 50, yPos);
-                    
-                    yPos += 8;
-                });
-                
-                yPos += 10;
-                
-                // Scoring Guide
-                doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.setFontSize(12);
-                doc.setFont('helvetica', 'bold');
-                doc.text('Scoring Guide', leftMargin, yPos);
-                yPos += 8;
-                
-                doc.setDrawColor(accentBlueR, accentBlueG, accentBlueB);
-                doc.line(leftMargin, yPos, pageWidth - leftMargin, yPos);
-                yPos += 10;
-                
-                const scoreRanges = [
-                    { range: '0-25', level: 'Unprepared', desc: 'Critical risk; no quantum defense strategy', color: [239, 68, 68] },
-                    { range: '26-50', level: 'Early-stage', desc: 'Awareness stage; significant work required', color: [245, 158, 11] },
-                    { range: '51-75', level: 'Progressing', desc: 'Partial readiness with some implementation', color: [75, 146, 204] },
-                    { range: '76-100', level: 'Mature', desc: 'Quantum-safe ready with strong governance', color: [16, 185, 129] }
-                ];
-                
-                scoreRanges.forEach(range => {
-                    doc.setFillColor(range.color[0], range.color[1], range.color[2]);
-                    doc.roundedRect(leftMargin, yPos - 3, 25, 6, 2, 2, 'F');
-                    
-                    doc.setFontSize(9);
-                    doc.setFont('helvetica', 'bold');
-                    doc.setTextColor(255, 255, 255);
-                    doc.text(range.range, leftMargin + 12.5, yPos, { align: 'center' });
-                    
-                    doc.setTextColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                    doc.text(range.level, leftMargin + 30, yPos);
-                    
-                    doc.setFont('helvetica', 'normal');
-                    doc.setTextColor(grayDarkR, grayDarkG, grayDarkB);
-                    doc.text('- ' + range.desc, leftMargin + 55, yPos);
-                    
-                    yPos += 10;
-                });
-                
-                // Footer
-                doc.setFillColor(primaryDarkR, primaryDarkG, primaryDarkB);
-                doc.rect(0, doc.internal.pageSize.getHeight() - 20, pageWidth, 20, 'F');
-                
-                doc.setTextColor(255, 255, 255);
-                doc.setFontSize(9);
-                doc.setFont('helvetica', 'normal');
-                doc.text('Powered by solutions.fixed.global', pageWidth / 2, doc.internal.pageSize.getHeight() - 8, { align: 'center' });
-                
-                // Save PDF
-                doc.save('QSRI_Assessment_' + fileNameDate + '.pdf');
-                
-            } catch (error) {
-                console.error('PDF export error:', error);
-                alert('Error exporting PDF: ' + error.message);
-            }
-        }
     </script>
 
     <footer class="footer">
