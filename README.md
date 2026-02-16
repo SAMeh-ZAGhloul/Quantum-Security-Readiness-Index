@@ -2,7 +2,7 @@
 
 A comprehensive web-based assessment tool designed to evaluate an organization's readiness for quantum threats and cryptographic transitions.
 
-## 🎯 Overview
+## Overview
 
 The Quantum Security Readiness Index (QSRI) is a standardized assessment framework that helps organizations:
 
@@ -11,7 +11,7 @@ The Quantum Security Readiness Index (QSRI) is a standardized assessment framewo
 - **Prioritize** investments in post-quantum cryptography (PQC)
 - **Track** progress across critical security dimensions
 
-## 📊 Assessment Dimensions
+## Assessment Dimensions
 
 The QSRI evaluates eight critical dimensions weighted by strategic importance:
 
@@ -26,7 +26,7 @@ The QSRI evaluates eight critical dimensions weighted by strategic importance:
 | **Regulatory & Compliance Alignment** | 10% | Alignment with national and international standards |
 | **Awareness & Workforce Training** | 10% | Internal capacity building and training on quantum risks |
 
-## 🎨 Features
+## Features
 
 ### Interactive Assessment Interface
 - **Real-time scoring** with dynamic updates as you adjust maturity levels
@@ -46,7 +46,7 @@ The QSRI evaluates eight critical dimensions weighted by strategic importance:
 - **Readiness classification** (Unprepared, Early-stage, Progressing, Mature)
 - **Clear progression paths** for each dimension
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Local Development
 
@@ -73,7 +73,7 @@ The QSRI evaluates eight critical dimensions weighted by strategic importance:
 4. **Export results** to PDF for reporting and planning
 5. **Track progress** over time by repeating the assessment
 
-## 📈 Understanding Your Results
+## Understanding Your Results
 
 ### Maturity Levels
 
@@ -95,88 +95,3 @@ The QSRI evaluates eight critical dimensions weighted by strategic importance:
 | **51-75** | Progressing | Partial readiness with some implementation |
 | **76-100** | Mature | Quantum-safe ready with strong governance |
 
-## 🔧 Technical Details
-
-### Architecture
-- **Single-page application** built with vanilla HTML, CSS, and JavaScript
-- **No external dependencies** required for core functionality
-- **PDF generation** powered by jsPDF library (loaded from CDN)
-- **Responsive design** using CSS Grid and Flexbox
-
-### Browser Support
-- Modern browsers (Chrome 60+, Firefox 55+, Safari 12+, Edge 79+)
-- Mobile browsers with full feature support
-- No Internet Explorer support (due to modern CSS/JS features)
-
-### File Structure
-```
-├── qsri-assessment.html    # Main assessment application
-└── README.md              # This documentation file
-```
-
-## 🤝 Contributing
-
-We welcome contributions to improve the QSRI assessment tool!
-
-### Development Setup
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Test thoroughly in multiple browsers
-5. Submit a pull request
-
-### Contribution Guidelines
-- Maintain backward compatibility
-- Follow existing code style and structure
-- Test changes across multiple browsers
-- Update documentation for significant changes
-
-## 📋 Roadmap
-
-### Planned Enhancements
-- [ ] Multi-language support
-- [ ] Customizable weight configurations
-- [ ] Historical score tracking
-- [ ] Industry benchmark comparisons
-- [ ] Integration with security frameworks (NIST, ISO 27001)
-- [ ] API endpoints for programmatic access
-
-### Future Features
-- [ ] Team collaboration features
-- [ ] Automated inventory discovery tools
-- [ ] Vendor assessment modules
-- [ ] Regulatory compliance mapping
-
-## 📚 Resources
-
-### Related Standards and Frameworks
-- [NIST Post-Quantum Cryptography Standardization](https://csrc.nist.gov/projects/post-quantum-cryptography)
-- [ETSI Quantum-Safe Cryptography](https://www.etsi.org/committee/qsc)
-- [ENISA Post-Quantum Cryptography](https://www.enisa.europa.eu/topics/csirt-cert-services/knowledge-base/quantum-safe-cryptography)
-- [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework)
-
-### Quantum Threat Timeline
-- **Current**: Classical cryptography remains secure
-- **2025-2030**: First quantum computers capable of breaking RSA-2048
-- **2030+**: Widespread quantum computing adoption
-
-## 📞 Support
-
-For questions, support, or feature requests:
-
-- **GitHub Issues**: [Open a new issue](https://github.com/SAMeh-ZAGhloul/Quantum-Security-Readiness-Index/issues)
-- **Email**: [Contact us](mailto:info@solutions.fixed.global)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **NIST** for their work on post-quantum cryptography standardization
-- **ETSI** and **ENISA** for quantum-safe cryptography guidance
-- **Open source community** for tools like jsPDF that make this possible
-
----
-
-**Ready to assess your quantum security readiness?** [Get started now!](#quick-start)
